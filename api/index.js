@@ -171,7 +171,12 @@ ${message}
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Careers server running on port ${PORT}`);
-});
+// For local development
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Careers server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel serverless
+module.exports = app;
